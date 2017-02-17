@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import css from './styles.less';
 
 export default class Headline extends Component {
   constructor(props) {

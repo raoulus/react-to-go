@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import Headline from 'components/Headline';
+import css from './styles.less';
 
 export default class App extends Component {
   constructor(props) {
@@ -7,7 +8,7 @@ export default class App extends Component {
   }
 
   render() {
-    return <div>
+    return <div className="app">
       <Headline text="Hellooo World" />
     </div>;
   }
