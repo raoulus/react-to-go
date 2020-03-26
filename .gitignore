@@ -61,8 +61,7 @@ typings/
 # dotenv environment variables file
 .env
 
-public/styles/*.css
-public/*.html
-public/js/*.js
+public/
 
 # End of https://www.gitignore.io/api/node
+.DS_Store

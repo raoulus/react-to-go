@@ -1,0 +1,13 @@
+{
+  "semi": false,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "overrides": [
+    {
+      "files": ["*.less", "*.css"],
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
+}

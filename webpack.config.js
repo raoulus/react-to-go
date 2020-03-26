@@ -1,52 +1,52 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   entry: './client/index.js',
   output: {
     filename: 'js/[name].[chunkhash].js',
-    path: path.resolve(__dirname, 'public')
+    path: path.resolve(__dirname, 'public'),
   },
   resolve: {
     modules: [
       path.resolve(__dirname, 'client'),
-      path.resolve(__dirname, 'node_modules')
-    ]
+      path.resolve(__dirname, 'node_modules'),
+    ],
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
-    new CleanWebpackPlugin(['public/']),
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: 'client/index.html',
       filename: 'index.html',
       minify: false,
-      showErrors: true
+      showErrors: true,
     }),
-    new ExtractTextPlugin({
-      filename: 'styles/[name].[chunkhash].css',
-      allChunks: true
-    }),
+    new CopyPlugin([{ from: 'client/assets' }]),
+    new MiniCssExtractPlugin(),
   ],
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.js|\.jsx$/,
         include: [path.resolve(__dirname, 'client')],
-        use: [{
-          loader: 'babel-loader',
-          options: {
-            presets: ['es2015', 'stage-0', 'react']
-          }
-        }]
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env', '@babel/preset-react'],
+              plugins: ['@babel/plugin-proposal-class-properties'],
+            },
+          },
+        ],
       },
       {
-        test: /\.less$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'less-loader']
-        })
-      }
-    ]
-  }
-};
+        test: /\.less$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'],
+      },
+    ],
+  },
+}
