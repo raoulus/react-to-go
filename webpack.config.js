@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const webpack = require('webpack')
+const pkg = require('./package.json')
 
 module.exports = {
   entry: './client/index.js',
@@ -27,6 +29,9 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new webpack.EnvironmentPlugin({
+      VERSION: pkg.version
+    }),
     new HtmlWebpackPlugin({
       template: 'client/index.html',
       filename: 'index.html',
