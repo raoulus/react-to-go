@@ -8,14 +8,19 @@ module.exports = {
   entry: './client/index.js',
   output: {
     filename: 'js/[name].[chunkhash].js',
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'public')
   },
   resolve: {
     modules: [
       path.resolve(__dirname, 'client'),
-      path.resolve(__dirname, 'node_modules'),
+      path.resolve(__dirname, 'node_modules')
     ],
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx']
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'public'),
+    compress: true,
+    port: 9000
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -23,10 +28,10 @@ module.exports = {
       template: 'client/index.html',
       filename: 'index.html',
       minify: false,
-      showErrors: true,
+      showErrors: true
     }),
     new CopyPlugin([{ from: 'client/assets' }]),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin()
   ],
   module: {
     rules: [
@@ -38,15 +43,15 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env', '@babel/preset-react'],
-              plugins: ['@babel/plugin-proposal-class-properties'],
-            },
-          },
-        ],
+              plugins: ['@babel/plugin-proposal-class-properties']
+            }
+          }
+        ]
       },
       {
         test: /\.less$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader'],
-      },
-    ],
-  },
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader']
+      }
+    ]
+  }
 }

@@ -17,21 +17,8 @@ export default class Navigation extends Component {
           <li>
             <Link to="/about">About</Link>
           </li>
-          <li>
-            <Link to="/users">Users</Link>
-          </li>
         </ul>
         <ul className="nav-right">
-          <li className="user">
-            <a href="#">
-              <i className="fas fa-user"></i>
-            </a>
-          </li>
-          <li className="user">
-            <a href="#">
-              <i className="fas fa-shopping-cart"></i>
-            </a>
-          </li>
           <li className="user">
             <a href="#">
               <i className="fas fa-sign-out-alt"></i>

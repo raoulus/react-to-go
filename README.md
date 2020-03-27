@@ -17,18 +17,18 @@ This project includes:
 # build production bundle in /public
 npm run build
 
+# start webpack dev server with hot reloading
+# visit http://localhost:9000
+npm run dev
+
 # start express server
 npm start
-
-# build dev bundle and start dev server
-npm run dev
 ```
 
 ## Linting and formatting
 This project uses [prettier](https://github.com/prettier/prettier) for code formatting in conjunction with [ESLint](https://github.com/eslint/eslint) for code linting and fixing.
 
 ```bash
-# lint
 npm run lint
 ```
 
@@ -61,3 +61,4 @@ To enjoy automatic linting and formatting  the following configuration for [Visu
 
 ## Todos
 - Setup tests with mocha and enzyme
+- Dockerfile using nginx as production server
