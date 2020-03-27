@@ -20,7 +20,10 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'public'),
     compress: true,
-    port: 9000
+    port: 9000,
+    open: true,
+    historyApiFallback: true,
+    writeToDisk: true
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -31,7 +34,11 @@ module.exports = {
       showErrors: true
     }),
     new CopyPlugin([{ from: 'client/assets' }]),
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin({
+      filename: '[name].[chunkhash].css',
+      chunkFilename: '[id].css',
+      ignoreOrder: false
+    })
   ],
   module: {
     rules: [
@@ -50,7 +57,16 @@ module.exports = {
       },
       {
         test: /\.less$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader']
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: process.env.NODE_ENV === 'development'
+            }
+          },
+          'css-loader',
+          'less-loader'
+        ]
       }
     ]
   }

@@ -1,15 +1,18 @@
-@red: rgb(238, 13, 13);
+@bg: rgb(13, 111, 238);
+@bg-light: rgb(75, 147, 240);
 
 .nav {
+  background: @bg;
   display: flex;
   .nav-left {
     flex: 3;
+    margin-right: 20rem;
   }
   .nav-right {
     flex: 2;
   }
   a {
-    background: @red;
+    background: @bg;
     color: white;
     font-weight: 300;
     letter-spacing: 2px;
@@ -20,7 +23,7 @@
     text-align: center;
 
     &:hover {
-      background: rgba(238, 13, 13, 0.75);
+      background: @bg-light;
     }
   }
 

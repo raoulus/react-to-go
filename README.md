@@ -5,9 +5,9 @@ Use this seed application to quickly bootstrap your prototypes. The setup is sel
 This project includes:
 - React 16.13.1 
 - webpack 4.42.1
+- webpack dev server 3.10.3
 - express 4.17.1
 - babel loader 8.1.0 and babel core 7.9.0
-- livereload 0.9.1
 - ESLint 6.8.0
 - prettier 2.0.2
 

@@ -7,7 +7,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "build": "webpack --mode=production",
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server --env.NODE_ENV=development",
     "start": "node server/app.js"
   },
   "author": "Raoul Jaeckel",
