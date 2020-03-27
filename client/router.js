@@ -1,5 +1,10 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useLocation
+} from 'react-router-dom'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 import './globals.less'
@@ -20,13 +25,16 @@ export default function AppRouter() {
             <Route path="/users">
               <Users />
             </Route>
-            <Route path="/">
+            <Route exact path="/">
               <Home />
+            </Route>
+            <Route path="*">
+              <NoMatch />
             </Route>
           </Switch>
         </div>
 
-        <Footer text="Footer" />
+        <Footer />
       </div>
     </Router>
   )
@@ -42,4 +50,16 @@ function About() {
 
 function Users() {
   return <h2>Users</h2>
+}
+
+function NoMatch() {
+  let location = useLocation()
+
+  return (
+    <div>
+      <h3>
+        No match for <code>{location.pathname}</code>
+      </h3>
+    </div>
+  )
 }
