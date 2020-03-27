@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import css from './styles.less'
+import './styles.less'
 
 export default class Footer extends Component {
   constructor(props) {
@@ -8,10 +7,15 @@ export default class Footer extends Component {
   }
 
   render() {
-    return <p>{this.props.text}</p>
+    return (
+      <div>
+        <p>
+          <i className="fab fa-github"></i>{' '}
+          <a href="https://github.com/raoulus/react-webpack-template/">
+            react-webpack-template (v{process.env.VERSION})
+          </a>
+        </p>
+      </div>
+    )
   }
-}
-
-Footer.propTypes = {
-  text: PropTypes.string.isRequired,
 }
