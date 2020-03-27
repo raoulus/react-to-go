@@ -1,15 +1,22 @@
 # Seed project for React using webpack and express
 
-Use this seed application to quickly bootstrap your prototypes. The setup is self made and has only really necessary dependencies installed.
+![Last commit](https://img.shields.io/github/last-commit/raoulus/react-webpack-template "Last commit")
+![Dependency Tracker](https://img.shields.io/david/dev/raoulus/react-webpack-template "Dependency Tracker")
 
-This project includes:
-- React 16.13.1 
-- webpack 4.42.1
-- webpack dev server 3.10.3
-- express 4.17.1
-- babel loader 8.1.0 and babel core 7.9.0
-- ESLint 6.8.0
-- prettier 2.0.2
+
+This seed repository is useful to quickly bootstrap your React application so that you can start coding right away. The setup is self made and tries to have less dependencies as possible.
+
+**Features**
+
+- [x] React 16.13.1
+- [x] Less 3.11.1
+- [x] Webpack 4.42.1 and Webpack dev server 3.10.3 including hot reloading
+- [x] Babel loader 8.1.0 and Babel core 7.9.0
+- [x] ESLint 6.8.0
+- [x] prettier 2.0.2
+- [ ] Unit and component tests
+- [ ] Dockerfile with Nginx as production server
+
 
 ## Getting started
 
@@ -59,6 +66,3 @@ To enjoy automatic linting and formatting  the following configuration for [Visu
 
 ```
 
-## Todos
-- Setup tests with mocha and enzyme
-- Dockerfile using nginx as production server
