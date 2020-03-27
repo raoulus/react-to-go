@@ -1,4 +1,4 @@
-# Seed project for React using webpack and express
+# :seedling: Seed project for React using webpack and express
 
 ![Last commit](https://img.shields.io/github/last-commit/raoulus/react-webpack-template "Last commit")
 ![Dependency Tracker](https://img.shields.io/david/dev/raoulus/react-webpack-template "Dependency Tracker")
