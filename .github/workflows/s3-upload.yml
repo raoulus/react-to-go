@@ -52,4 +52,4 @@ jobs:
     - name: Upload assets to S3 bucket
       env:
         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-      run: aws s3 sync . s3://$AWS_S3_BUCKET --delete --acl public-read --exclude '.git/*'
+      run: aws s3 sync ./webpack-build s3://$AWS_S3_BUCKET --delete --acl public-read --exclude '.git/*'
