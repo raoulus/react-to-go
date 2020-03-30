@@ -19,6 +19,8 @@ This seed repository is useful to quickly bootstrap your React application so th
 - [ ] Github workflow (AWS S3 upload)
 - [ ] Unit and component tests
 
+**Demo**   
+http://react-webpack-template.s3-website.eu-central-1.amazonaws.com/
 
 ## Getting started
 
