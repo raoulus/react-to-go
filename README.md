@@ -15,8 +15,9 @@ This seed repository is useful to quickly bootstrap your React application so th
 - [x] Babel loader 8.1.0 and Babel core 7.9.0
 - [x] ESLint 6.8.0
 - [x] prettier 2.0.2
+- [x] Dockerfile with Nginx as production server
+- [ ] Github workflow (AWS S3 upload)
 - [ ] Unit and component tests
-- [ ] Dockerfile with Nginx as production server
 
 
 ## Getting started
