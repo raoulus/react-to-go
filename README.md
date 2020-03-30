@@ -1,11 +1,13 @@
-# :seedling: Seed project for React using webpack and express
+# :seedling: Seed project for React and webpack
 
 ![CI](https://github.com/raoulus/react-webpack-template/workflows/CI/badge.svg)
 ![Last commit](https://img.shields.io/github/last-commit/raoulus/react-webpack-template "Last commit")
 ![Dependency Tracker](https://img.shields.io/david/dev/raoulus/react-webpack-template "Dependency Tracker")
 
 
-This seed repository is useful to quickly bootstrap your React application so that you can start coding right away. The setup is self made and tries to have less dependencies as possible.
+Clone this repository and start coding your React app right away. This project tries to give you the best setup and has only really needed dependencies installed. So no worries about configuration, it's all done!
+
+Continuous integration and continuous deployments are configured as [github workflow](.github/workflows/s3-upload.yml). The CD pipeline compiles and deploys the React app to an AWS S3 bucket triggered on every commit and merge to master.
 
 **Features**
 
@@ -15,8 +17,8 @@ This seed repository is useful to quickly bootstrap your React application so th
 - [x] Babel loader 8.1.0 and Babel core 7.9.0
 - [x] ESLint 6.8.0
 - [x] prettier 2.0.2
-- [x] Dockerfile with Nginx as production server
-- [ ] Github workflow (AWS S3 upload)
+- [x] Docker build using Nginx as production server
+- [x] CI/CD Github workflow and AWS S3 upload
 - [ ] Unit and component tests
 
 **Demo**   
@@ -82,3 +84,52 @@ docker run --name react-webpack-template --rm -p 3000:80 react-webpack-template:
 
 # go to http://localhost:3000
 ```
+
+## Github workflow with AWS S3
+You find the working github workflow under [.github/workflows/s3-upload.yml](.github/workflows/s3-upload.yml). This workflow contains two jobs namely `build` and `deploy`.
+
+`build`  
+The job runs `npm run build` and outputs static assets under `/public`. To have a clean deployment this folder is saved as artifact for the next job.
+
+`deploy`  
+The [`AWS credentials`](https://github.com/aws-actions/configure-aws-credentials) needs to be configured in order to use AWS CLI ([`aws sync`](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html)) to recursively copy new and updated files to an S3 bucket.
+
+Following secrets have to be created in github (repository -> settings -> secrets)
+
+```bash
+AWS_ACCESS_KEY_ID=xxx
+AWS_SECRET_ACCESS_KEY=xxx
+AWS_REGION=eu-central-1
+AWS_S3_BUCKET=react-webpack-template
+```
+
+`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` can be found in AWS under IAM -> Users -> security credentials.
+
+### AWS S3 IAM policy
+The access rights for the API user should be restricted for security reasons. Create an IAM policy with the following configuration. This policy can then be attached to a group to which a user belongs. 
+
+These permissions are needed to perform [`aws sync`](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html)
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:ListBucket",
+                "s3:DeleteObject",
+                "s3:GetBucketLocation"
+            ],
+            "Resource": [
+                "arn:aws:s3:::react-webpack-template",
+                "arn:aws:s3:::react-webpack-template/*"
+            ]
+        }
+    ]
+}
+```
+
