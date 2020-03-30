@@ -1,5 +1,6 @@
 # :seedling: Seed project for React using webpack and express
 
+![CI](https://github.com/raoulus/react-webpack-template/workflows/CI/badge.svg)
 ![Last commit](https://img.shields.io/github/last-commit/raoulus/react-webpack-template "Last commit")
 ![Dependency Tracker](https://img.shields.io/david/dev/raoulus/react-webpack-template "Dependency Tracker")
 
