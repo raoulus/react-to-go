@@ -36,6 +36,7 @@ jobs:
          name: webpack-build
          path: public
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - name: Download artifact
