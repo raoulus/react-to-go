@@ -1,8 +1,8 @@
 # :seedling: Seed project for React and webpack
 
-![CI](https://github.com/raoulus/react-webpack-template/workflows/CI/badge.svg)
-![Last commit](https://img.shields.io/github/last-commit/raoulus/react-webpack-template "Last commit")
-![Dependency Tracker](https://img.shields.io/david/dev/raoulus/react-webpack-template "Dependency Tracker")
+![CI](https://github.com/raoulus/react-to-go/workflows/CI/badge.svg)
+![Last commit](https://img.shields.io/github/last-commit/raoulus/react-to-go "Last commit")
+![Dependency Tracker](https://img.shields.io/david/dev/raoulus/react-to-go "Dependency Tracker")
 
 
 Clone this repository and start coding your React app right away. This project tries to give you the best setup and has only really needed dependencies installed. So no worries about configuration, it's all done!
@@ -22,7 +22,7 @@ Continuous integration and continuous deployments are configured as [github work
 - [ ] Unit and component tests
 
 **Demo**   
-http://react-webpack-template.s3-website.eu-central-1.amazonaws.com/
+http://react-to-go.s3-website.eu-central-1.amazonaws.com/
 
 ## Getting started
 
@@ -76,11 +76,11 @@ To enjoy automatic linting and formatting  the following configuration for [Visu
 There's a npm command to build docker image using [Nginx](https://hub.docker.com/_/nginx).
 
 ```bash
-# build image with tag react-webpack-template:1.0.0
+# build image with tag react-to-go:1.0.0
 npm run build:docker
 
 # start image
-docker run --name react-webpack-template --rm -p 3000:80 react-webpack-template:1.0.0
+docker run --name react-to-go --rm -p 3000:80 react-to-go:1.0.0
 
 # go to http://localhost:3000
 ```
@@ -100,7 +100,7 @@ Following secrets have to be created in github (repository -> settings -> secret
 AWS_ACCESS_KEY_ID=xxx
 AWS_SECRET_ACCESS_KEY=xxx
 AWS_REGION=eu-central-1
-AWS_S3_BUCKET=react-webpack-template
+AWS_S3_BUCKET=react-to-go
 ```
 
 `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` can be found in AWS under IAM -> Users -> security credentials.
@@ -125,8 +125,8 @@ These permissions are needed to perform [`aws sync`](https://docs.aws.amazon.com
                 "s3:GetBucketLocation"
             ],
             "Resource": [
-                "arn:aws:s3:::react-webpack-template",
-                "arn:aws:s3:::react-webpack-template/*"
+                "arn:aws:s3:::react-to-go",
+                "arn:aws:s3:::react-to-go/*"
             ]
         }
     ]

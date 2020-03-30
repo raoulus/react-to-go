@@ -11,8 +11,8 @@ export default class Footer extends Component {
       <div>
         <p>
           <i className="fab fa-github"></i>{' '}
-          <a href="https://github.com/raoulus/react-webpack-template/">
-            react-webpack-template (v{process.env.VERSION})
+          <a href="https://github.com/raoulus/react-to-go/">
+            react-to-go (v{process.env.VERSION})
           </a>
         </p>
       </div>

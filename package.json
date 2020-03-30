@@ -1,5 +1,5 @@
 {
-  "name": "react-webpack-template",
+  "name": "react-to-go",
   "version": "1.0.0",
   "description": "Seed project for React together with express using webpack 2",
   "main": "server/index.js",
@@ -7,7 +7,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "build": "webpack --mode=production",
-    "build:docker": "docker build -t react-webpack-template:1.0.0 .",
+    "build:docker": "docker build -t react-to-go:1.0.0 .",
     "dev": "webpack-dev-server --env.NODE_ENV=development",
     "start": "npm run dev"
   },
