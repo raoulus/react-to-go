@@ -38,8 +38,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    #- uses: actions/checkout@master
-    - name: Download math result for job 2
+    - name: Download artifact
       uses: actions/download-artifact@v1
       with:
         name: webpack-build
