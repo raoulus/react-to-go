@@ -7,6 +7,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "build": "webpack --mode=production",
+    "build:docker": "docker build -t react-webpack-template:1.0.0 .",
     "dev": "webpack-dev-server --env.NODE_ENV=development",
     "start": "node server/app.js"
   },

@@ -67,3 +67,15 @@ To enjoy automatic linting and formatting  the following configuration for [Visu
 
 ```
 
+## Docker build with Nginx
+There's a npm command to build docker image using [Nginx](https://hub.docker.com/_/nginx).
+
+```bash
+# "build:docker": "docker build -t react-webpack-template:1.0.0 ."
+npm run build:docker
+
+docker run --name react-webpack-template --rm -p 3000:80 re
+act-webpack-template:1.0.0
+
+# go to http://localhost:3000
+```
