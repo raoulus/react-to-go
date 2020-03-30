@@ -9,7 +9,7 @@
     "build": "webpack --mode=production",
     "build:docker": "docker build -t react-webpack-template:1.0.0 .",
     "dev": "webpack-dev-server --env.NODE_ENV=development",
-    "start": "node server/app.js"
+    "start": "npm run dev"
   },
   "author": "Raoul Jaeckel",
   "license": "",
@@ -39,8 +39,5 @@
     "webpack-cli": "3.3.11",
     "webpack-dev-server": "3.10.3"
   },
-  "dependencies": {
-    "compression": "1.7.4",
-    "express": "4.17.1"
-  }
+  "dependencies": {}
 }
