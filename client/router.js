@@ -3,7 +3,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  useLocation
+  useLocation,
+  Redirect
 } from 'react-router-dom'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
@@ -28,9 +29,14 @@ export default function AppRouter() {
             <Route exact path="/">
               <Home />
             </Route>
+            <Route exact path="/index.html">
+              <Redirect to="/" />
+            </Route>
             <Route path="*">
               <NoMatch />
             </Route>
+            
+
           </Switch>
         </div>
 
