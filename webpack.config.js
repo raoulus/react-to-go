@@ -48,6 +48,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.md$/,
+        use: [{ loader: 'raw-loader' }]
+      },
+      {
         test: /\.js|\.jsx$/,
         include: [path.resolve(__dirname, 'client')],
         use: [

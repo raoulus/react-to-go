@@ -6,6 +6,7 @@ import {
   useLocation,
   Redirect
 } from 'react-router-dom'
+import Readme from './components/Readme'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 import './globals.less'
@@ -27,7 +28,7 @@ export default function AppRouter() {
               <Users />
             </Route>
             <Route exact path="/">
-              <Home />
+              <Readme />
             </Route>
             <Route exact path="/index.html">
               <Redirect to="/" />
@@ -42,10 +43,6 @@ export default function AppRouter() {
       </div>
     </Router>
   )
-}
-
-function Home() {
-  return <h2>Home</h2>
 }
 
 function About() {
