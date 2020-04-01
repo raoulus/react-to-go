@@ -1,9 +1,8 @@
 # :seedling: Seed project for React and webpack
 
 ![CI](https://github.com/raoulus/react-to-go/workflows/CI/badge.svg)
-![Last commit](https://img.shields.io/github/last-commit/raoulus/react-to-go "Last commit")
-![Dependency Tracker](https://img.shields.io/david/dev/raoulus/react-to-go "Dependency Tracker")
-
+![Last commit](https://img.shields.io/github/last-commit/raoulus/react-to-go 'Last commit')
+![Dependency Tracker](https://img.shields.io/david/dev/raoulus/react-to-go 'Dependency Tracker')
 
 Clone this repository and start coding your React app right away. This project tries to give you the best setup and has only really needed dependencies installed. So no worries about configuration, it's all done!
 
@@ -21,8 +20,8 @@ Continuous integration and continuous deployments are configured as [github work
 - [x] CI/CD Github workflow and AWS S3 upload
 - [ ] Unit and component tests
 
-**Demo**   
-http://react-to-go.s3-website.eu-central-1.amazonaws.com/
+**Demo**  
+https://d2lk6w0egm4dxt.cloudfront.net/
 
 ## Getting started
 
@@ -39,40 +38,37 @@ npm start
 ```
 
 ## Linting and formatting
+
 This project uses [prettier](https://github.com/prettier/prettier) for code formatting in conjunction with [ESLint](https://github.com/eslint/eslint) for code linting and fixing.
 
 ```bash
 npm run lint
 ```
 
-To enjoy automatic linting and formatting  the following configuration for [Visual Studio Code](https://github.com/microsoft/vscode) can be used.
+When using [Visual Studio Code](https://github.com/microsoft/vscode) the workspace will be automatically configured by `.vscode/settings.json`.
 
-*settings.json*
+_settings.json_
+
 ```json
 {
-    "editor.formatOnSave": false,
-    "[json]": {
-        "editor.formatOnSave": true,
-    },
-    "[less]": {
-        "editor.formatOnSave": true,
-    },
-    "[javascript]": {
-        "editor.formatOnSave": false,
-    },
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true,
-        "source.fixAll.stylelint": true,
-        "source.fixAll.tslint": true
-    },
-    "eslint.validate": ["javascriptreact"],
-    "javascript.format.enable": false,
-    "javascript.validate.enable": false,
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true,
+    "source.fixAll.tslint": true
+  },
+  "editor.formatOnSave": true,
+  "eslint.enable": true,
+  "eslint.validate": ["javascriptreact"],
+  "javascript.format.enable": false,
+  "javascript.validate.enable": false
 }
-
 ```
 
 ## Docker build with Nginx
+
 There's a npm command to build docker image using [Nginx](https://hub.docker.com/_/nginx).
 
 ```bash
@@ -86,6 +82,7 @@ docker run --name react-to-go --rm -p 3000:80 react-to-go:1.0.0
 ```
 
 ## Github workflow with AWS S3
+
 You find the working github workflow under [.github/workflows/s3-upload.yml](.github/workflows/s3-upload.yml). This workflow contains two jobs namely `build` and `deploy`.
 
 `build`  
@@ -106,30 +103,27 @@ AWS_S3_BUCKET=react-to-go
 `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` can be found in AWS under IAM -> Users -> security credentials.
 
 ### AWS S3 IAM policy
-The access rights for the API user should be restricted for security reasons. Create an IAM policy with the following configuration. This policy can then be attached to a group to which a user belongs. 
+
+The access rights for the API user should be restricted for security reasons. Create an IAM policy with the following configuration. This policy can then be attached to a group to which a user belongs.
 
 These permissions are needed to perform [`aws sync`](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html)
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-                "s3:PutObject",
-                "s3:GetObject",
-                "s3:ListBucket",
-                "s3:DeleteObject",
-                "s3:GetBucketLocation"
-            ],
-            "Resource": [
-                "arn:aws:s3:::react-to-go",
-                "arn:aws:s3:::react-to-go/*"
-            ]
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "VisualEditor0",
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+        "s3:GetObject",
+        "s3:ListBucket",
+        "s3:DeleteObject",
+        "s3:GetBucketLocation"
+      ],
+      "Resource": ["arn:aws:s3:::react-to-go", "arn:aws:s3:::react-to-go/*"]
+    }
+  ]
 }
 ```
-

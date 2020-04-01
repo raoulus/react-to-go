@@ -35,8 +35,6 @@ export default function AppRouter() {
             <Route path="*">
               <NoMatch />
             </Route>
-            
-
           </Switch>
         </div>
 
