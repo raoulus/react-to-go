@@ -3,7 +3,7 @@ import marked from 'marked'
 import readme from '../../../README.md'
 import './styles.less'
 
-export default class Footer extends Component {
+export default class Readme extends Component {
   constructor(props) {
     super(props)
   }

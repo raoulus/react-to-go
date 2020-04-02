@@ -11,5 +11,6 @@
   "eslint.enable": true,
   "eslint.validate": ["javascriptreact"],
   "javascript.format.enable": false,
-  "javascript.validate.enable": false
+  "javascript.validate.enable": false,
+  "standard.enable": false
 }
