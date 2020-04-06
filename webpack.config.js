@@ -7,14 +7,14 @@ const webpack = require('webpack')
 const pkg = require('./package.json')
 
 module.exports = {
-  entry: './client/index.js',
+  entry: './app/index.js',
   output: {
     filename: 'js/[name].[chunkhash].js',
     path: path.resolve(__dirname, 'public')
   },
   resolve: {
     modules: [
-      path.resolve(__dirname, 'client'),
+      path.resolve(__dirname, 'app'),
       path.resolve(__dirname, 'node_modules')
     ],
     extensions: ['.js', '.jsx']
@@ -33,12 +33,12 @@ module.exports = {
       VERSION: pkg.version
     }),
     new HtmlWebpackPlugin({
-      template: 'client/index.html',
+      template: 'app/index.html',
       filename: 'index.html',
       minify: false,
       showErrors: true
     }),
-    new CopyPlugin([{ from: 'client/assets' }]),
+    new CopyPlugin([{ from: 'app/assets' }]),
     new MiniCssExtractPlugin({
       filename: '[name].[chunkhash].css',
       chunkFilename: '[id].css',
@@ -53,7 +53,7 @@ module.exports = {
       },
       {
         test: /\.js|\.jsx$/,
-        include: [path.resolve(__dirname, 'client')],
+        include: [path.resolve(__dirname, 'app')],
         use: [
           {
             loader: 'babel-loader',

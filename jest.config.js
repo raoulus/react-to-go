@@ -6,5 +6,6 @@ module.exports = {
   },
   moduleNameMapper: {
     '\\.(css|less)$': '<rootDir>/__mocks__/style.mock.js'
-  }
+  },
+  collectCoverageFrom: ['**/app/**/*.{js,jsx}', '!**/node_modules/**']
 }

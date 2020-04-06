@@ -119,7 +119,7 @@ Snapshots are taken and compared with the previous version every time when the t
 
 Here's a step by step guide how to create and update snapshot tests.
 
-1. Write a new snapshot test, e.g. [`/components/Footer/__tests__/Footer.spec.js`](client/components/Footer/__tests__/Footer.spec.js)
+1. Write a new snapshot test, e.g. [`/components/Footer/__tests__/Footer.spec.js`](app/components/Footer/__tests__/Footer.spec.js)
 
 ```javascript
 import React from 'react'
