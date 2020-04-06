@@ -10,7 +10,7 @@ export default class Readme extends Component {
 
   render() {
     return (
-      <section>
+      <section data-testid="markdown-wrapper">
         <article dangerouslySetInnerHTML={{ __html: marked(readme) }}></article>
       </section>
     )

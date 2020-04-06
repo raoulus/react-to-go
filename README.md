@@ -23,12 +23,15 @@ Continuous integration and continuous deployments are configured as [github work
 **Demo**  
 https://d2lk6w0egm4dxt.cloudfront.net/
 
+**Table of contents**
+
 - [:seedling: Seed project for React and webpack](#seedling-seed-project-for-react-and-webpack)
   - [Getting started](#getting-started)
   - [Linting and formatting](#linting-and-formatting)
   - [Testing](#testing)
     - [Snapshot testing](#snapshot-testing)
     - [Unit (DOM) Testing](#unit-dom-testing)
+    - [Notes](#notes)
   - [Docker build with Nginx](#docker-build-with-nginx)
   - [Github workflow with AWS S3](#github-workflow-with-aws-s3)
     - [AWS S3 IAM policy](#aws-s3-iam-policy)
@@ -116,7 +119,7 @@ Snapshots are taken and compared with the previous version every time when the t
 
 Here's a step by step guide how to create and update snapshot tests.
 
-1. Write a new snapshot test, e.g. [`/components/Footer/__tests__/Footer.spec.js`](./client/components/Footer/__tests__/Footer.spec.js')
+1. Write a new snapshot test, e.g. [`/components/Footer/__tests__/Footer.spec.js`](client/components/Footer/__tests__/Footer.spec.js)
 
 ```javascript
 import React from 'react'
@@ -183,6 +186,11 @@ This projects follows the [recommendation](https://jestjs.io/docs/en/tutorial-re
 - `@testing-library/react`
 - [`@testing-library/jest-dom`](https://github.com/testing-library/jest-dom) (custom Jest matchers)
 - `eslint-plugin-jest-dom`
+
+### Notes
+
+- Jest will set `process.env.NODE_ENV` to `'test'` if it's not set to something else
+- Styles (`less`|`css`) are mocked, see [`__mocks__/style.mock.js`](__mocks__/style.mock.js)
 
 ## Docker build with Nginx
 
