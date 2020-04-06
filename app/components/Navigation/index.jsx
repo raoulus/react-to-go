@@ -18,13 +18,6 @@ export default class Navigation extends Component {
             <Link to="/about">About</Link>
           </li>
         </ul>
-        <ul className="nav-right">
-          <li className="user">
-            <a href="#">
-              <i className="fas fa-sign-out-alt"></i>
-            </a>
-          </li>
-        </ul>
       </nav>
     )
   }

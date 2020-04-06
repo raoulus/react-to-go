@@ -1,5 +1,12 @@
 {
-  "extends": ["plugin:prettier/recommended", "eslint:recommended", "plugin:react/recommended"],
+  "extends": [
+    "plugin:prettier/recommended",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:jest/recommended",
+    "plugin:jest-dom/recommended"
+  ],
+  "plugins": ["jest", "jest-dom"],
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 2018,

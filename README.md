@@ -23,9 +23,28 @@ Continuous integration and continuous deployments are configured as [github work
 **Demo**  
 https://d2lk6w0egm4dxt.cloudfront.net/
 
+**Table of contents**
+
+- [:seedling: Seed project for React and webpack](#seedling-seed-project-for-react-and-webpack)
+  - [Getting started](#getting-started)
+  - [Linting and formatting](#linting-and-formatting)
+  - [Testing](#testing)
+    - [Snapshot testing](#snapshot-testing)
+    - [Unit (DOM) Testing](#unit-dom-testing)
+    - [Notes](#notes)
+  - [Docker build with Nginx](#docker-build-with-nginx)
+  - [Github workflow with AWS S3](#github-workflow-with-aws-s3)
+    - [AWS S3 IAM policy](#aws-s3-iam-policy)
+
 ## Getting started
 
 ```bash
+# clone repo
+git clone git@github.com:raoulus/react-to-go.git
+
+# install dependencies
+npm i
+
 # build production bundle in /public
 npm run build
 
@@ -66,6 +85,112 @@ _settings.json_
   "javascript.validate.enable": false
 }
 ```
+
+## Testing
+
+This project uses [Jest](https://jestjs.io/) and supports Unit (DOM) Testing as well as [Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing).
+
+**Base Dependencies**
+
+- `jest`
+- `babel-jest`
+- `@babel/preset-env`
+- `@babel/preset-react`
+- `eslint-plugin-jest`
+
+```bash
+# run all tests with jest
+npm test
+
+# run all tests in watch mode
+npm test:watch
+```
+
+### Snapshot testing
+
+> Snapshot tests are a very useful tool whenever you want to make sure your UI does not change unexpectedly.
+> _https://jestjs.io/docs/en/snapshot-testing_
+
+**Dependencies**
+
+- [`react-test-renderer`](https://reactjs.org/docs/test-renderer.html)
+
+Snapshots are taken and compared with the previous version every time when the tests are executed.
+
+Here's a step by step guide how to create and update snapshot tests.
+
+1. Write a new snapshot test, e.g. [`/components/Footer/__tests__/Footer.spec.js`](app/components/Footer/__tests__/Footer.spec.js)
+
+```javascript
+import React from 'react'
+import Footer from '../index.jsx'
+import renderer from 'react-test-renderer'
+describe('<Footer /> ', () => {
+  test('matches snapshot', () => {
+    const component = renderer.create(<Footer />)
+    let tree = component.toJSON()
+    expect(tree).toMatchInlineSnapshot()
+  })
+})
+```
+
+2. Run initial test (`npm test`) to replace `.toMatchInlineSnapshot()` with the actual content
+
+```javascript
+test('matches snapshot', () => {
+    const component = renderer.create(<Footer />)
+    let tree = component.toJSON()
+    expect(tree).toMatchInlineSnapshot(`
+      <div>
+        <p>
+          <i
+            className="fab fa-github"
+          />
+
+          <a
+            href="https://github.com/raoulus/react-to-go/"
+          >
+            react-to-go (v
+            )
+          </a>
+        </p>
+      </div>
+    `)
+  })
+})
+```
+
+In addition to the actual test the snapshot content must be maintained separately. Meaning every time the content of a component changes then the snapshot needs to be updated as well.
+
+3. Change content
+4. Run tests again `npm test`
+5. Snapshot tests will fail and needs to be updated with `npm test -- --updateSnapshot`
+
+```bash
+Snapshot Summary
+ › 2 snapshots failed from 1 test suite. Inspect your code changes or run `npm test -- -u` to update them.
+```
+
+6. Update snapshot `npm test -- -u`
+7. Commit changes
+
+### Unit (DOM) Testing
+
+This projects follows the [recommendation](https://jestjs.io/docs/en/tutorial-react#dom-testing) from Jest to use `react-testing-library` for Unit Testing also known as DOM Testing.
+
+> The React Testing Library is a very light-weight solution for testing React components. It provides light utility functions on top of react-dom and react-dom/test-utils, in a way that encourages better testing practices.  
+> _https://testing-library.com/docs/react-testing-library/intro_
+
+**Dependencies**
+
+- `@testing-library/react`
+- [`@testing-library/jest-dom`](https://github.com/testing-library/jest-dom) (custom Jest matchers)
+- `eslint-plugin-jest-dom`
+
+### Notes
+
+- Jest will set `process.env.NODE_ENV` to `'test'` if it's not set to something else
+- Styles (`less`|`css`) are mocked, see [`__mocks__/style.mock.js`](__mocks__/style.mock.js)
 
 ## Docker build with Nginx
 
