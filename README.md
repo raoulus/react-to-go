@@ -1,6 +1,7 @@
 # :seedling: Seed project for React and webpack
 
 ![CI](https://github.com/raoulus/react-to-go/workflows/CI/badge.svg)
+[![codecov](https://codecov.io/gh/raoulus/react-to-go/branch/master/graph/badge.svg)](https://codecov.io/gh/raoulus/react-to-go)
 ![Last commit](https://img.shields.io/github/last-commit/raoulus/react-to-go 'Last commit')
 ![Dependency Tracker](https://img.shields.io/david/dev/raoulus/react-to-go 'Dependency Tracker')
 
