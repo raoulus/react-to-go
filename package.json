@@ -2,14 +2,14 @@
   "name": "react-to-go",
   "version": "1.0.0",
   "description": "Seed project for React",
-  "main": "server/index.js",
+  "main": "app/index.js",
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "build": "webpack --mode=production",
-    "build:docker": "docker build -t react-to-go:1.0.0 .",
+    "build:docker": "docker build -t react-to-go .",
     "dev": "webpack-dev-server --env.NODE_ENV=development",
     "start": "npm run dev"
   },
