@@ -11,15 +11,13 @@ Continuous integration and continuous deployments are configured as [github work
 
 **Features**
 
-- [x] React 16.13.1
-- [x] Less 3.11.1
-- [x] Webpack 4.42.1 and Webpack dev server 3.10.3 including hot reloading
-- [x] Babel loader 8.1.0 and Babel core 7.9.0
-- [x] ESLint 6.8.0
-- [x] prettier 2.0.2
-- [x] Docker build using Nginx as production server
-- [x] CI/CD Github workflow and AWS S3 upload
-- [ ] Unit and component tests
+- [x] Everything builds on top of latest [React](https://github.com/facebook/react) and [webpack](https://github.com/webpack/webpack)
+- [x] Local development with hot reloading using [webpack dev server](https://github.com/webpack/webpack-dev-server)
+- [x] Linting and code formatting on the fly with [ESLint](https://github.com/eslint/eslint) and [prettier](https://github.com/prettier/prettier)
+- [x] Pre-configured test environment for component and snapshot tests using [Jest](https://github.com/facebook/jest)
+- [x] Component styling with [Less](https://github.com/less/less.js)
+- [x] [Docker](https://github.com/docker) to go! Build a production ready image including [Nginx](https://github.com/nginx/nginx)
+- [x] Continuous integration and automatic deployment to AWS S3 with [Github actions](https://help.github.com/en/actions)
 
 **Demo**  
 https://d2lk6w0egm4dxt.cloudfront.net/
